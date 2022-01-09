@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
     CameraBridgeViewBase javaCameraView;
     Mat mRGBA;
-
     Mat old_gray_frame = null;
     Boolean pointSelected = true;
     MatOfPoint2f old_points;
@@ -36,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     Point initial_point;
     MatOfByte status;
     MatOfFloat err;
+    // Approximated value.
     double mpi = 0.05;
     long startTime;
 
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRGBA = inputFrame.rgba();
 
-//        Log.d("Debugging", this.old_gray_frame.toString());
         if (this.old_gray_frame == null) {
             this.old_gray_frame = inputFrame.gray();
             ArrayList<Point> good_new = new ArrayList<>();
